@@ -94,7 +94,7 @@
       document.getElementById('correo').textContent = usuario.correo;
       document.getElementById('roles').textContent = usuario.roles.join(', ');
 
-      fetch('http://localhost:4000/api/cachuelos/mios', {
+      fetch('https://ayudame-pe.onrender.com/api/cachuelos/mios', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -117,7 +117,7 @@
         }
       });
 
-      fetch('http://localhost:4000/api/cachuelos/postulaciones', {
+      fetch('https://ayudame-pe.onrender.com/api/cachuelos/postulaciones', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -181,7 +181,7 @@
         precio: form.elements['precio'].value
       };
 
-      fetch(`http://localhost:4000/api/cachuelos/${idEditando}`, {
+      fetch(`https://ayudame-pe.onrender.com/api/cachuelos/${idEditando}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -204,7 +204,7 @@
     function eliminarTarea(id) {
       const token = localStorage.getItem('token');
       if (confirm('¿Estás seguro de eliminar este cachuelo?')) {
-        fetch(`http://localhost:4000/api/cachuelos/${id}`, {
+        fetch(`https://ayudame-pe.onrender.com/api/cachuelos/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`

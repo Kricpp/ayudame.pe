@@ -38,7 +38,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      fetch('http://localhost:4000/api/cachuelos')
+      fetch('https://ayudame-pe.onrender.com/api/cachuelos')
         .then(res => res.json())
         .then(data => {
           const contenedor = document.getElementById('tareas');
@@ -78,7 +78,7 @@
         return;
       }
 
-      fetch(`http://localhost:4000/api/cachuelos/${idTarea}/postular`, {
+      fetch(`https://ayudame-pe.onrender.com/api/cachuelos/${idTarea}/postular`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
