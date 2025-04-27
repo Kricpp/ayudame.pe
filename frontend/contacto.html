@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto | Ayúdame.pe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Ayúdame.pe</div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="publicar.html">Publicar</a>
+      <a href="tareas.html">Tareas</a>
+      <a href="register.html" class="btn">Regístrate</a>
+      <a href="https://chat.whatsapp.com/DIuqOk2vdgwJriq2yS6Wws" class="btn-outline" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="height: 18px; vertical-align: middle; margin-right: 6px;">
+        Contáctenos
+      </a>
+      
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Contáctanos</h2>
+    <p>¿Tienes preguntas, dudas o quieres unirte al equipo? Déjanos tus datos:</p>
+
+    <form method="POST" action="/api/contacto" class="styled-form">
+      <input name="nombre" placeholder="Nombre completo" required>
+      <input name="correo" type="email" placeholder="Correo electrónico" required>
+      <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <button type="submit" class="cta">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Ayúdame.pe</p>
+    <div class="social">
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </footer>
+
+</body>
+</html>

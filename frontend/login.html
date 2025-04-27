@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión | Ayúdame.pe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Ayúdame.pe</div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="publicar.html">Publicar</a>
+        <a href="tareas.html">Tareas</a>
+        <a href="login.html" class="btn-outline">Iniciar sesión</a>
+        <a href="register.html" class="btn">Regístrate</a>
+      </nav>
+      
+  </header>
+
+  <section class="form-section">
+    <h2>Iniciar Sesión</h2>
+    <p>Ingresa con tu correo y contraseña para acceder a tu cuenta.</p>
+
+    <form id="form-login" class="styled-form">
+        <input name="correo" type="email" placeholder="Correo electrónico" required>
+        <input name="password" type="password" placeholder="Contraseña" required>
+        <button type="submit" class="cta">Ingresar</button>
+      </form>
+      
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Ayúdame.pe</p>
+    <div class="social">
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('form-login').addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const form = e.target;
+      const correo = form.correo.value;
+      const password = form.password.value;
+  
+      try {
+        const res = await fetch('http://localhost:4000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ correo, password })
+        });
+  
+        const data = await res.json();
+  
+        if (res.ok) {
+          // Guardamos el token y el usuario en localStorage
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('usuario', JSON.stringify(data.usuario));
+  
+          alert('Inicio de sesión exitoso');
+          window.location.href = 'perfil.html'; // o donde prefieras redirigir
+        } else {
+          alert(data.mensaje || 'Error al iniciar sesión');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error al conectar con el servidor');
+      }
+    });
+  </script>
+  <a href="https://chat.whatsapp.com/DIuqOk2vdgwJriq2yS6Wws" class="btn-flotante" target="_blank">
+    💬 Contáctenos
+  </a>
+  
+</body>
+</html>

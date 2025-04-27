@@ -1,0 +1,356 @@
+/* ===== ESTILO GENERAL ===== */
+body {
+    
+    padding-top: 80px; /* Deja espacio para la navbar fija */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #fefefe;
+  }
+  
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* 🔹 Esto evita que se desborde */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #ddd;
+    z-index: 999;
+    box-sizing: border-box; /* 🔹 Importante para que respete los padding */
+  }
+  
+  
+  
+  .navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+
+  }
+  .navbar .logo img {
+    height: 30px;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  .navbar nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .navbar .btn {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  .navbar .btn-outline {
+    border: 1px solid #ff5722;
+    color: #ff5722;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  /* ===== HERO ===== */
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2em;
+    background-color: #f9f9f9;
+  }
+  
+  .hero-text {
+    max-width: 50%;
+  }
+  
+  .hero-text .tag {
+    color: #ff5722;
+    font-weight: bold;
+  }
+  
+  .hero-text .highlight {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  
+  /* ===== BOTONES ===== */
+  .cta {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .cta-outline {
+    border: 1px solid #ff5722;
+    color: #ff5722;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  /* ===== FORMULARIOS ===== */
+  .form-section {
+    max-width: 600px;
+    margin: 3em auto;
+    padding: 2em;
+    background: #fff3e0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .styled-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .styled-form input,
+  .styled-form textarea {
+    margin-bottom: 1em;
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .roles label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  /* ===== SECCIONES GENERALES CENTRADAS ===== */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2em 1em;
+  }
+  
+  /* ===== SECCIÓN "CÓMO FUNCIONA" ===== */
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 2em;
+  }
+  
+  .step {
+    width: 220px;
+    background: #fff8f0;
+    padding: 1em;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  }
+  
+  /* ===== BENEFICIOS ===== */
+  .benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    align-items: center;
+  }
+  
+  .benefits .text {
+    max-width: 500px;
+  }
+  
+  .benefits .highlight-box {
+    background: #ffccbc;
+    padding: 1.5em;
+    border-radius: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.04);
+  }
+  
+  /* ===== COMUNIDAD ===== */
+  .community {
+    text-align: center;
+  }
+  
+  .community .cta-outline {
+    margin-top: 1em;
+  }
+  
+  /* ===== TAREAS ===== */
+  .task-list {
+    padding: 2em;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .task-list .tarea {
+    background: #fbe9e7;
+    border-radius: 8px;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .task-list .tarea h3 {
+    margin-bottom: 5px;
+  }
+  
+  .task-list .tarea button {
+    margin-top: 10px;
+  }
+  
+  /* ===== PIE DE PÁGINA ===== */
+  footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  footer .social a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px); /* 💎 Fondo borroso */
+    background-color: rgba(0, 0, 0, 0.4); /* Semitransparente */
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: #fff;
+    padding: 2em;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: popUp 0.3s ease;
+  }
+  
+  @keyframes popUp {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .btn-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-flotante:hover {
+    background-color: #1ebe5d;
+  }
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .hero-text,
+
+    .hero-img {
+        width: 100%;
+        max-width: 450px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 10px;
+        
+      }
+
+    .benefits {
+      flex-direction: column;
+    }
+  
+    .benefits .text,
+    .benefits .highlight-box {
+      max-width: 90%;
+    }
+  
+    .steps {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .step {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .logo img {
+        height: 30px;
+        vertical-align: middle;
+      }
+
+      .navbar .logo img {
+        height: 30px;
+        width: auto;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+    
+      
+      
+  }
+  

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayúdame.pe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Modal de Contacto -->
+<div id="modal-contacto" class="modal-overlay">
+    <div class="modal">
+      <h2>¡Bienvenido a Ayúdame.pe!</h2>
+      <p>Estamos en versión beta. Déjanos tus datos y sé parte de las novedades.</p>
+      <form id="form-contacto-modal" class="styled-form">
+        <input name="nombre" placeholder="Nombre" required>
+        <input name="apellido" placeholder="Apellido" required>
+        <input name="numero" placeholder="Número (opcional)">
+        <input name="correo" type="email" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" placeholder="Mensaje o interés..." required></textarea>
+        <button type="submit" class="cta">Enviar</button>
+        <button type="button" class="cta-outline" onclick="cerrarModal()">Cerrar</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <header class="navbar">
+    <div class="logo">
+        <img src="assets/logo.jpeg" alt="Logo">
+        Ayúdame.pe
+      </div>
+      
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="publicar.html">Publicar</a>
+        <a href="tareas.html">Tareas</a>
+        <a href="login.html" class="btn-outline">Iniciar sesión</a>
+        <a href="register.html" class="btn">Regístrate</a>
+      </nav>
+      
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="tag">Novedades</span>
+      <p class="highlight">Facilita tus tareas en minutos</p>
+      <p>Ayúdame.pe es la plataforma donde puedes publicar las tareas que necesitas resolver —como pintar, cuidar mascotas o apoyo con estudios— 
+        y también ofrecer tu tiempo y habilidades para ayudar a otros.  </p>
+      <p>Publica lo que necesitas o encuentra cachuelos cerca de ti. ¡Todo en un solo lugar!</p>
+      <a href="publicar.html" class="cta">Publicar tarea</a>
+      <a href="tareas.html" class="cta-outline">Ver tareas</a>
+    </div>
+    <div class="hero-img">
+        <img id="slider-img" src="assets/perro.jpg" alt="Paseando un perro" />
+    </div>
+      
+  </section>
+
+  <section class="info">
+    <h2>Cómo funciona Ayúdame.pe</h2>
+    <div class="steps">
+      <div class="step">📝 Publica tu tarea o revisa las disponibles</div>
+      <div class="step">🔍 Encuentra ayudantes o postúlate a cachuelos</div>
+      <div class="step">⚡ Coordina fácil y rápido por chat</div>
+      <div class="step">✅ Soluciona tus necesidades o gana por ayudar</div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="text">
+      <h3>¿Por qué usar Ayúdame.pe?</h3>
+      <p> Porque te da una solución sencilla para encontrar apoyo confiable y generar ingresos sin complicaciones.
+        Si tienes una necesidad puntual o quieres ofrecer tu tiempo libre, esta app es para ti.</p>
+      <a href="register.html" class="cta">Descubre más</a>
+    </div>
+    <div class="highlight-box">
+      <p><strong>10,000+</strong> Tareas completadas con éxito</p>
+    </div>
+  </section>
+
+  <section class="community">
+    <h3>Únete a nuestra comunidad</h3>
+    <p>Entra a nuestro grupo de WhatsApp para enterarte de nuevas tareas y oportunidades. 
+        Ya seas cliente o cachuelero, aquí estarás al tanto de todo.</p>
+    <a href="https://chat.whatsapp.com/DIuqOk2vdgwJriq2yS6Wws" class="cta-outline" target="_blank">Unirme al grupo</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Ayúdame.pe</p>
+    <div class="social">
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </footer>
+  <script>
+    const imagenes = [
+      { src: 'assets/perro.jpg', alt: 'Paseando un perro' },
+      { src: 'assets/pintando.jpg', alt: 'Pintando una pared' },
+      { src: 'assets/estudiando.jpg', alt: 'Ayudando con tareas' },
+      { src: 'assets/cargando.jpg', alt: 'Ayudando en casa' }
+    ];
+  
+    let actual = 0;
+    const slider = document.getElementById('slider-img');
+  
+    setInterval(() => {
+      actual = (actual + 1) % imagenes.length;
+      slider.src = imagenes[actual].src;
+      slider.alt = imagenes[actual].alt;
+    }, 4000);
+
+        setInterval(() => {
+    slider.style.opacity = 0;
+    setTimeout(() => {
+        actual = (actual + 1) % imagenes.length;
+        slider.src = imagenes[actual].src;
+        slider.alt = imagenes[actual].alt;
+        slider.style.opacity = 1;
+    }, 300);
+    }, 4000);
+
+
+
+
+  </script>
+  
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('modal-contacto');
+      modal.style.display = 'flex';
+  
+      document.getElementById('form-contacto-modal').addEventListener('submit', async (e) => {
+        e.preventDefault();
+  
+        const datos = {
+          nombre: e.target.nombre.value,
+          apellido: e.target.apellido.value,
+          numero: e.target.numero.value,
+          correo: e.target.correo.value,
+          mensaje: e.target.mensaje.value
+        };
+  
+        try {
+          const res = await fetch('http://localhost:4000/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+  
+          const resultado = await res.json();
+          alert(resultado.mensaje || 'Mensaje enviado');
+          cerrarModal();
+        } catch (err) {
+          alert('Hubo un error al enviar tu mensaje.');
+          console.error(err);
+        }
+      });
+    });
+  
+    function cerrarModal() {
+      document.getElementById('modal-contacto').style.display = 'none';
+    }
+  </script>
+  <a href="https://chat.whatsapp.com/DIuqOk2vdgwJriq2yS6Wws" class="btn-flotante" target="_blank">
+    💬 Contáctenos
+  </a>
+  
+  
+</body>
+</html>

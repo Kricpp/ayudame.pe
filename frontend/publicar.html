@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publicar Cachuelo | Ayúdame.pe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Ayúdame.pe</div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="publicar.html">Publicar</a>
+        <a href="tareas.html">Tareas</a>
+        <a href="login.html" class="btn-outline">Iniciar sesión</a>
+        <a href="register.html" class="btn">Regístrate</a>
+      </nav>
+      
+  </header>
+
+  <section class="form-section">
+    <h2>Publicar un cachuelo</h2>
+    <p>Llena los datos de tu tarea y espera a que un ayudante se postule.</p>
+
+    <form id="form-publicar" class="styled-form" >
+        <input type="text" name="titulo" placeholder="Título del cachuelo" required>
+        <textarea name="descripcion" placeholder="Descripción del trabajo" required></textarea>
+        <input type="text" name="ubicacion" placeholder="Ubicación" required>
+        <input type="date" name="fecha" required>
+        <input type="number" name="precio" placeholder="Precio ofrecido (S/.)" required>
+        <button type="submit" class="cta">Publicar</button>
+      </form>
+      
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Ayúdame.pe</p>
+    <div class="social">
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('form-publicar').addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Debes iniciar sesión para publicar un cachuelo.');
+        window.location.href = 'register.html';
+        return;
+      }
+  
+      const form = e.target;
+      const data = {
+        titulo: form.titulo.value,
+        descripcion: form.descripcion.value,
+        ubicacion: form.ubicacion.value,
+        fecha: form.fecha.value,
+        precio: form.precio.value
+      };
+  
+      try {
+        const res = await fetch('http://localhost:4000/api/cachuelos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(data)
+        });
+  
+        const result = await res.json();
+  
+        if (res.ok) {
+          alert('¡Cachuelo publicado con éxito!');
+          form.reset();
+        } else {
+          alert(result.mensaje || 'Error al publicar');
+        }
+      } catch (err) {
+        alert('Error en la conexión con el servidor');
+        console.error(err);
+      }
+    });
+  </script>
+  <a href="https://chat.whatsapp.com/DIuqOk2vdgwJriq2yS6Wws" class="btn-flotante" target="_blank">
+    💬 Contáctenos
+  </a>
+  
+
+</body>
+</html>
